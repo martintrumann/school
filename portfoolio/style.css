@@ -1,0 +1,17 @@
+header {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around
+
+}
+nav a {
+    padding: 10px 20px;
+
+}
+
+nav a:hover{
+    background-color: darkred;
+}
