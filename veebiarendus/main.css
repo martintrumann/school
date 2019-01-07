@@ -1,0 +1,73 @@
+html{
+	height: 100%;
+}
+
+body{
+	font-family: "helvetica";
+	margin: 0;
+	height: 100%;
+}
+
+header {
+	margin: 0;
+	padding: 100px 0 20px 0;
+	text-align: center;
+	background-color: darkorange;
+}
+
+nav {
+	background-color: rgba(0, 160, 255, 0.5);
+	display: flex;
+	justify-content: space-around;
+	padding: 0 10px;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+	padding: 10px 20px;
+}
+
+nav a:hover{
+	background-color: rgba(0, 160, 255, 1);
+}
+
+main{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	text-align: center;
+}
+
+.subject h1{
+	font-size: 50px;
+	color: darkorange;
+	margin: 0;
+}
+
+.subject button {
+	border: none;
+	padding: 10px;
+	background-color: rgb(0, 160, 255);
+}
+
+.subject button:hover {
+	background-color: rgb(0, 131, 210);
+}
+
+.minust {
+	text-align: right;
+	color: black;
+}
+
+.minust h1 p{
+	text-align: right
+;	display: block;
+	float: right;
+}
+
+img {
+	padding: 10px;
+	display: block;
+}
