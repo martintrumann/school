@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 header {
     text-align: center;
 }
@@ -5,13 +9,19 @@ header {
 nav {
     display: flex;
     justify-content: center;
-
+    background-color: darkslategray;
 }
 nav a {
     padding: 10px 20px;
-
+    color: white;
+    text-decoration: none;
 }
 
 nav a:hover{
     background-color: darkred;
+}
+
+/*Main*/
+main{
+    margin: 10px;
 }
