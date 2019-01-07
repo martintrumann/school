@@ -6,13 +6,15 @@ header {
     text-align: center;
 }
 
+/*Nav*/
 nav {
     display: flex;
     justify-content: center;
     background-color: darkslategray;
 }
 nav a {
-    padding: 10px 20px;
+    font-size: 20px;
+    padding: 10px 30px;
     color: white;
     text-decoration: none;
 }
