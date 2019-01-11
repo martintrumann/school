@@ -57,17 +57,12 @@ main{
 }
 
 .minust {
-	text-align: right;
 	color: black;
 }
 
-.minust h1 p{
-	text-align: right
-;	display: block;
-	float: right;
+.minust h2, .minust p {
 }
 
 img {
 	padding: 10px;
-	display: block;
 }
