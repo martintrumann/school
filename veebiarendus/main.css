@@ -76,16 +76,12 @@ aside {
 	height: 100%;
 }
 
-.veerg{
-	width: 60%;
+.pildid{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.pildid img{
 	padding: 10px;
-	float: left;
-}
-
-.veerg img{
-	opacity: 0.8;
-}
-
-.veerg img:hover{
-	opacity: 1;
+	width: 400px;
 }
