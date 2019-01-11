@@ -13,7 +13,7 @@ int main() {
 	printf("mis on maja otsaseina pikkus: ");
 	scanf("%lf", &otspikkus);
 	
-	katusaar2 =  (otspikkus / 2) + korgus;
+	katusaar2 =  (otspikkus / 2)* otspikkus + korgus * korgus;
 	katusaar = sqrt(katusaar2);
 
 	S = 2 * ( katusaar * pikkus );
