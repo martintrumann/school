@@ -13,11 +13,11 @@ if "apple" in fruit:
     print("apple on listis")
 print(len(fruit))
 
-fruit.pop
+fruit.pop()
 print(fruit)
 
 fruit = fruit[::-1]
 print(fruit)
 
-fruit.sort
+fruit.sort()
 print(fruit)
