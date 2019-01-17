@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset=utf-8>
+	<style>
+		main{
+			border:solid 1px black;
+			padding: 1.5cm 1.5cm 1.5cm 3cm;
+			font-family: "Times New Roman", Times, Serif;
+			font-size: 12pt;
+		}
+		h1 {
+			font-style: italic;
+			font-weight: bold;
+			font-size: 16pt;
+		}
+		h2 {
+			text-transform: uppercase;
+			font-weight: bold;
+			margin: 0;
+			font-size: 12pt;
+		}
+		table {
+			width: 100%;
+		}
+		td.1{
+			width: 5cm;
+		}
+	</style>
+</head>
+<body>
+	<main id="1">
+		<h1>Cirriculum Vitae</h1>
+		<h2>isiklik informatsioon</h2>
+		<table>
+			<tr>
+				<td class="1">Nimi</td>
+				<td><h2>Martin Trumann<h2></td>
+			</tr>
+			<tr>
+				<td class="1">Sünniaeg</td>
+				<td>28.09.2002</td>
+			</tr>
+			<tr>
+				<td class="1">Aadress</td>
+				<td>Saadu talu, Saaremaa vald, 53325, Saare Maakond</td>
+			</tr>
+			<tr>
+				<td class="1">Telefon</td>
+				<td>+372 5109 720</td>
+			</tr>
+			<tr>
+				<td class="1">e-mail</td>
+				<td>martin.trumann@gmail.com</td>
+			</tr>
+			<tr>
+				<td class="1">Perekonnaseis</td>
+				<td>vallaline</td>
+			</tr>
+		</table>
+	</main>
+	<h1>Cirriculum Vitae</h1>
+	<h2>isiklik informatsioon</h2>
+	<table>
+		<tr>
+			<td class="1">Nimi</td>
+			<td><h2>Martin Trumann<h2></td>
+		</tr>
+		<tr>
+			<td class="1">Sünniaeg</td>
+			<td>28.09.2002</td>
+		</tr>
+		<tr>
+			<td class="1">Aadress</td>
+			<td>Saadu talu, Saaremaa vald, 53325, Saare Maakond</td>
+		</tr>
+		<tr>
+			<td class="1">Telefon</td>
+			<td>+372 5109 720</td>
+		</tr>
+		<tr>
+			<td class="1">e-mail</td>
+			<td>martin.trumann@gmail.com</td>
+		</tr>
+		<tr>
+			<td class="1">Perekonnaseis</td>
+
+			<td>vallaline</td>
+		</tr>
+	</table>
+</body>
+</html>
