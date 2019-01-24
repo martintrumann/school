@@ -13,16 +13,12 @@ dict = {
     "frankcofrev": input("Frank's coffee revenue: "),
     "janecofrev": input("Jane's coffee revenue: "),
     
+    "frankteaexp": input("Frank's tea expences: "),
+    "janeteaexp": input("Jane's tea expences: "),
     "frankcofexp": input("Frank's coffee expences: "),
     "janecofexp": input("Jane's coffee expences: "),
-    "janeteaexp": input("Jane's tea expences: "),
-    "frankteaexp": input("Frank's tea expences: "),
 }
 
-print(comcalc(dict["franktearev"], dict["frankteaexp"]))
+print(comcalc(dict["franktearev"], dict["frankteaexp"]) + comcalc(dict["frankcofrev"], dict["frankcofexp"]))
 
-print(comcalc(dict["janetearev"], dict["janeteaexp"]))
-
-print(comcalc(dict["frankcofrev"], dict["frankcofexp"]))
-
-print(comcalc(dict["janecofrev"], dict["janecofexp"]))
+print(comcalc(dict["janetearev"], dict["janeteaexp"]) + comcalc(dict["janecofrev"], dict["janecofexp"]))
