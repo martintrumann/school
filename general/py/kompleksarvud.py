@@ -19,21 +19,22 @@ elif a == 0 and b < 0:
 else:
 	fiirad = math.atan(b / a)
 	fiideg = math.degrees(fiirad)
-	if fiideg < 360:
-		fiideg = fii - 360
-	elif fiideg < 0 and a > 0 and b > 0: # I sector
-		while fiideg < 0:
+	if fiideg > 360:
+		fiideg = fiideg - 360
+	elif a > 0 and b > 0: # I sector
+		while fiideg > 90 and fiideg < 0:
 			fiideg = fiideg + 180
-	elif fiideg < 90 and a < 0 and b > 0: # II sector
-		while fiideg < 90:
+	elif a < 0 and b > 0: # II sector
+		while fiideg > 180 and fiideg < 90:
 			fii = fiideg + 180
-	elif fiideg < 180 and a < 0 and b < 0: # III sector
-		while fiideg < 180:
+	elif a < 0 and b < 0: # III sector
+		while fiideg > 270 and fiideg < 180:
 			fiideg = fiideg + 180 
-	elif fiideg < 270 and a > 0 and b < 0: # IV sector
-		while fiideg < 270:
+	elif a > 0 and b < 0: # IV sector
+		while fiideg > 360 and fiideg < 270:
 			fiideg = fiideg + 180
 	else:
 		print("how did you get here? it shoul be impossible")
 
-print("fii  on", fiideg)
+fiideg = round(fiideg)
+print("fii on", fiideg)
