@@ -34,7 +34,7 @@ else:
 		while fiideg > 360 and fiideg < 270:
 			fiideg = fiideg + 180
 	else:
-		print("how did you get here? it shoul be impossible")
+		print("how did you get here? it should be impossible")
 
 fiideg = round(fiideg)
 print("fii on", fiideg)
