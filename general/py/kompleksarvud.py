@@ -1,13 +1,13 @@
 import math
-a = int(input("sisesta reaalosa: "))
-b = int(input("sisesta imaginaarosa ilma i-ta: "))
+a = float(input("sisesta reaalosa: "))
+b = float(input("sisesta imaginaarosa ilma i-ta: "))
 
 r = a * a + b * b
 if math.sqrt(r) % 1 == 0:
 	r = round(math.sqrt(r))
 	print("moodul on", r)
 else:
-	r = "\u221a" + str(r)
+	r = "\u221a" + str(round(r))
 	print("moodul on", r)
 
 if b == 0 and a > 0:
