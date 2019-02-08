@@ -32,7 +32,7 @@ int main() {
 	printf("parkimine maksab %.2lf€\n", parkimine);
 
 
-	majutus = 50 * aeg;
+	majutus = 50 * (aeg - 1);
 
 	printf("majutus maksab %.2lf€\n", majutus);
 
