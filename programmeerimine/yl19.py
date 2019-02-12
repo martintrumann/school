@@ -80,6 +80,14 @@ while game == True:
 				else:
 					dhand += 1
 
+		# winning calculation
+		if phand > dand:
+			print("you win! Bet's doubled")
+			bet *= 2
+		else:
+			print("You lost!")
+			round = False
+
 		# Losing conditions
 		if money < 0:
 			print("You're in debt, Good luck paying it off")
