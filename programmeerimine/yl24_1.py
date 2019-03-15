@@ -1,7 +1,6 @@
 import urllib3, json, re
 from bs4 import BeautifulSoup
 
-#url = "https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424"
 url = "https://www.imdb.com/chart/top?ref_=nv_mv_250"
 page = urllib3.PoolManager().request('GET',url).data
 soup = BeautifulSoup(page, "lxml")
