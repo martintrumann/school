@@ -1,11 +1,16 @@
 import urllib3, json, re
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as BS
 
 url = "https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424"
 
 page = urllib3.PoolManager().request('GET',url).data
-soup = BeautifulSoup(page, "lxml")
+soup = BS(page, "lxml")
 
-script = soup.find_all('script')[24].string
+scripts = soup.find_all('script')
 
-pyscript = json.loads(script)
+script = scripts[24]
+sscript = str(script)
+
+print(re.sub('^(.*?)?(events.*)', "\\2", str(script)))
+
+#pyscript = json.loads(script)
