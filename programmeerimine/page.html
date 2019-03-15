@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Tunniplaan :: Kuressaare Ametikool</title>
+<link rel="shortcut icon" href="https://siseveeb.ee/icons/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="https://siseveeb.ee/icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://siseveeb.ee/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://siseveeb.ee/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://siseveeb.ee/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://siseveeb.ee/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://siseveeb.ee/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://siseveeb.ee/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://siseveeb.ee/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://siseveeb.ee/icons/apple-touch-icon-180x180.png">
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/themes/blue.css" type="text/css" class="theme-css">
+<link rel="stylesheet" href="/css/theme.default.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="/css/chosen.css" type="text/css">
+<link rel="stylesheet" href="/css/footable.bootstrap.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.bootstrap-touchspin.css" type="text/css">
+<link rel="stylesheet" href="/css/clockpicker.css" type="text/css">
+<link rel="stylesheet" href="/fontawesome/web-fonts-with-css/css/fontawesome-all.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.minicolors.css" type="text/css">
+<link rel="stylesheet" href="/css/styles.css" type="text/css">
+<link media="print" href="/css/fullcalendar_new.print.css" rel="stylesheet">
+<link href="/css/fullcalendar_new.css" rel="stylesheet">
+<script type="text/javascript" src="/scripts/handlebars.min.js"></script><script type="text/javascript" src="/scripts/jquery-1.min.js"></script><script type="text/javascript" src="/scripts/bootstrap.min.js"></script><script type="text/javascript" src="/scripts/jquery.tablesorter.js"></script><script type="text/javascript" src="/scripts/chosen.jquery.min.js"></script><script type="text/javascript" src="/scripts/jquery.tablesorter.widgets.js"></script><script type="text/javascript" src="/scripts/jquery-ui.min.js"></script><script type="text/javascript" src="/scripts/jquery-migrate-git.min.js"></script><script type="text/javascript" src="/scripts/general.js?v=3"></script><script type="text/javascript" src="/scripts/respond.min.js"></script><script type="text/javascript" src="/scripts/jquery.collapser.min.js"></script><script type="text/javascript" src="/scripts/footable.js"></script><script type="text/javascript" src="/scripts/clockpicker.js"></script><script type="text/javascript" src="/scripts/jquery.scrollTo.js"></script><script type="text/javascript" src="/scripts/jquery.bootstrap-touchspin.js"></script><script type="text/javascript" src="/scripts/jquery.ui.touch-punch.min.js"></script><script type="text/javascript" src="/scripts/autosize.min.js"></script><script type="text/javascript" src="/scripts/mColorPicker.min.js"></script><script type="text/javascript" src="/scripts/jquery.minicolors.min.js"></script><script type="text/javascript" src="/scripts/moment_new.min.js"></script><script type="text/javascript" src="/scripts/fullcalendar_new.min.js"></script><script type="text/javascript" src="/scripts/et.js"></script><script type="text/javascript">$.fn.mColorPicker.init.showLogo=false;$.fn.mColorPicker.defaults.imageFolder="https://ametikool.siseveeb.ee/img/";</script><script type="text/javascript" src="/fontawesome/svg-with-js/js/fontawesome-all.min.js"></script><script type="text/javascript">
+                function setMinHeights(view){
+        var events=$(".fc-time-grid-event").not(".lesson_time");
+        for(var i=0;i<events.length;i++) {
+            var height=$(events[i]).height();
+            var width=$(events[i]).outerWidth();
+            $(events[i]).css("min-height",height);
+            $(events[i]).css("min-width",width);
+        }
+        };
+        function setTimeLabels(view){
+        var curCalView = jQuery("#calendar").fullCalendar("getView");
+        if (curCalView.name == "agendaWeek") { 
+        var axisRow=$("div.fc-content-skeleton").find("td.fc-axis");
+        $(axisRow).append('<div class="fc-event-container"></div>');
+        axisRow=$(axisRow).find("div.fc-event-container");
+        var lessons=jQuery("#calendar").fullCalendar("option","lessons");
+        var axisCell="";
+        $(lessons).each(function(i,e){
+            var beginHours = (e.start) - (curCalView.timeGrid.minTime / 1000 / 60 / 60);
+            var endHours = (e.end) - (curCalView.timeGrid.minTime / 1000 / 60 / 60);
+            var topLoc = Math.floor($("div.fc-slats").height() / ((curCalView.timeGrid.maxTime - curCalView.timeGrid.minTime) / 1000 / 60 / 60) * beginHours);
+            var bottomLoc = Math.floor($("div.fc-slats").height() / ((curCalView.timeGrid.maxTime - curCalView.timeGrid.minTime) / 1000 / 60 / 60) * endHours);
+            axisCell='<a style="top: '+topLoc+'px; bottom: -'+bottomLoc+'px; z-index: 1; left: 0%; right: 50%;" class="fc-time-grid-event fc-v-event fc-event '+e.className+'"><div class="fc-content">'+e.title+'</div></a>';
+            $(axisRow).append(axisCell);
+        });
+            }
+        };
+        var defaultView="";
+        function mark_message_read(img,system_message_id) {
+            $.post("https://ametikool.siseveeb.ee/info/meeldetuletused/ajax_cmd?cmd=mark_system_message_read",                    "system_message_id="+system_message_id,function(data) {
+                if(data.result=="Ok") {
+                $(img).closest("h2").parent().remove();
+                    $("#system_messages_badge").text(Number($("#system_messages_badge").text())-1);
+                    if(Number($("#system_messages_badge").text())>0) $("#system_messages_badge").show();
+                    else $("#system_messages_badge").hide();
+                    modal_hide();}
+                else alert("Antud sõnumit ei saanud loetuks märkida.");
+            },"json");
+        };$(document).ready(function(){$("select.plan_filter_select").change(function(){
+            var url="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?nadal=11.03.2019";
+            url=url+"&"+$(this).attr("name")+"="+$(this).val();
+            window.location=url;
+        });
+            
+             if ($(window).width() < 800) defaultView="listWeek";
+             else
+             defaultView="agendaWeek";
+          	$("#calendar").fullCalendar({
+			header: {
+				center: "",
+				left: "",
+				right: ""
+			},
+            allDaySlot: false,
+            nowIndicator:true,
+            now: "2019-03-15T11:11:24+02:00",
+            firstDay: 1,
+            minTime: "8:00:00",
+            maxTime: "22:00:00",
+            defaultView: defaultView,
+			defaultDate: "2019-03-11",
+			editable: false,
+			eventLimit: true,
+			contentHeight: "auto",
+			height:"auto",
+			viewRender: function (view) {},
+			events: [{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14472571&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Projektijuhtimine SCRUM </span>; Ian Erik Pettersson; Õppehoone - Õ301 (Arvutiklass)',description:'',start:'2019-03-11T08:30:00+02:00',end:'2019-03-11T10:00:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14472620&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Projektijuhtimine SCRUM </span>; Ian Erik Pettersson; Õppehoone - Õ301 (Arvutiklass)',description:'',start:'2019-03-11T10:15:00+02:00',end:'2019-03-11T11:45:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14472674&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Veebiarendus </span>; <span class=\"label label-warning\">valikaine</span>; Triin Tisler; Õppehoone - Õ205 (Arvutiklass)',description:'',start:'2019-03-11T12:45:00+02:00',end:'2019-03-11T14:15:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14472721&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Klienditeenindus </span>; Marve Koppel; Juurdeehitus - K206',description:'',start:'2019-03-11T14:30:00+02:00',end:'2019-03-11T15:55:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14472764&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Dokumenteerimine </span>; Triin Tisler; Õppehoone - Õ205 (Arvutiklass)',description:'',start:'2019-03-12T08:30:00+02:00',end:'2019-03-12T10:00:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14472817&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Projektijuhtimine SCRUM </span>; Ian Erik Pettersson; Õppehoone - Õ301 (Arvutiklass)',description:'',start:'2019-03-12T10:15:00+02:00',end:'2019-03-12T11:45:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14472884&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">VR </span>; <span class=\"label label-warning\">valikaine</span>; Triin Tisler; Juurdeehitus - K206',description:'',start:'2019-03-12T12:45:00+02:00',end:'2019-03-12T14:15:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14472925&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">VR </span>; <span class=\"label label-warning\">valikaine</span>; Triin Tisler; Juurdeehitus - K206',description:'',start:'2019-03-12T14:30:00+02:00',end:'2019-03-12T15:55:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14472975&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Infosüsteem ja IT-taristu </span>; Triin Tisler; Õppehoone - Õ205 (Arvutiklass)',description:'',start:'2019-03-13T08:30:00+02:00',end:'2019-03-13T10:00:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473021&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Infosüsteem ja IT-taristu </span>; Triin Tisler; Õppehoone - Õ205 (Arvutiklass)',description:'',start:'2019-03-13T10:15:00+02:00',end:'2019-03-13T11:45:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473079&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Eesti keel ja kirjandus </span>; Maiju Zuping; Õppehoone - Õ303 (Õppeklass)',description:'',start:'2019-03-13T12:45:00+02:00',end:'2019-03-13T14:15:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473143&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Kursusejuhataja tund </span>; Karin Saare; Õppehoone - Õ203 (Õppeklass)',description:'',start:'2019-03-13T14:30:00+02:00',end:'2019-03-13T15:15:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473144&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Kursusejuhataja tund </span>; Õppehoone - Õ203 (Õppeklass)',description:'',start:'2019-03-13T14:30:00+02:00',end:'2019-03-13T15:15:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473221&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Robootika </span>; <span class=\"label label-warning\">valikaine</span>; Andrus Naulainen; Õppehoone - Õ205 (Arvutiklass)',description:'',start:'2019-03-14T08:30:00+02:00',end:'2019-03-14T10:00:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473286&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Robootika </span>; <span class=\"label label-warning\">valikaine</span>; Andrus Naulainen; Õppehoone - Õ205 (Arvutiklass)',description:'',start:'2019-03-14T10:15:00+02:00',end:'2019-03-14T11:45:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473342&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Projektijuhtimine </span>; Triin Tisler; Õppehoone - Õ205 (Arvutiklass)',description:'',start:'2019-03-14T12:45:00+02:00',end:'2019-03-14T14:15:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473400&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Projektijuhtimine </span>; Triin Tisler; Õppehoone - Õ205 (Arvutiklass)',description:'',start:'2019-03-14T14:30:00+02:00',end:'2019-03-14T15:55:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473529&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Programmeerimine </span>; Andrus Naulainen; Juurdeehitus - K204 (Arvutiklass)',description:'',start:'2019-03-15T08:30:00+02:00',end:'2019-03-15T10:00:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473585&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Programmeerimine </span>; Andrus Naulainen; Juurdeehitus - K204 (Arvutiklass)',description:'',start:'2019-03-15T10:15:00+02:00',end:'2019-03-15T11:45:00+02:00',className:''},{link:'https://ametikool.siseveeb.ee/veebivormid/tunniplaan/ajax_cmd?cmd=plan_modal&plan_id=14473631&tagasi=%2Fveebivormid%2Ftunniplaan%2Ftunniplaan%3Foppegrupp%3D424',title:'<span class=\"entry_subjects bold font-bold\">Eesti keel ja kirjandus </span>; Maiju Zuping; Õppehoone - Õ303 (Õppeklass)',description:'',start:'2019-03-15T12:45:00+02:00',end:'2019-03-15T14:15:00+02:00',className:''}],
+			lessons: [{title:'1. tund',start:'8.5',end:'9.25',className:'lesson_time'},{title:'2. tund',start:'9.25',end:'10',className:'lesson_time'},{title:'3. tund',start:'10.25',end:'11',className:'lesson_time'},{title:'4. tund',start:'11',end:'11.75',className:'lesson_time'},{title:'5. tund',start:'12',end:'12.75',className:'lesson_time'},{title:'6. tund',start:'12.75',end:'13.5',className:'lesson_time'},{title:'7. tund',start:'13.5',end:'14.25',className:'lesson_time'},{title:'8. tund',start:'14.5',end:'15.25',className:'lesson_time'},{title:'9. tund',start:'15.25',end:'15.916666666667',className:'lesson_time'},{title:'10. tund',start:'16',end:'16.75',className:'lesson_time'},{title:'11. tund',start:'16.75',end:'17.5',className:'lesson_time'},{title:'12. tund',start:'17.583333333333',end:'18.333333333333',className:'lesson_time'},{title:'13. tund',start:'18.333333333333',end:'19.083333333333',className:'lesson_time'},{title:'14. tund',start:'19.166666666667',end:'19.916666666667',className:'lesson_time'},{title:'15. tund',start:'19.916666666667',end:'20.666666666667',className:'lesson_time'},{title:'16. tund',start:'20.75',end:'21.5',className:'lesson_time'}],
+			hiddenDays:[0,6],
+            eventRender: function(event, element) {
+                element.find("div.fc-title").html(element.find("div.fc-title").text());
+                element.find("td.fc-list-item-title").html(element.find("td.fc-list-item-title").text());
+            },
+            eventClick: function(calEvent, jsEvent, view) {
+                 var button=$(jsEvent.target);
+                 var edit_button=$(button).hasClass("glyphicon-pencil");
+                 var is_link=$(button).attr("href");
+                 if(calEvent.link && !edit_button && !is_link)
+                 {
+                   $.post(calEvent.link,{type: "groups",id:"424",week_begin:"2019-03-11"},function(data){
+                    modal_show(data);
+                   },"html");
+               }
+            },
+            eventMouseover: function(event, jsEvent, view) {
+                $(this).closest("div.fc-content-col").css("z-index","100");
+            },
+            eventMouseout: function(event, jsEvent, view) {
+                $(this).closest("div.fc-content-col").css("z-index","");
+            },
+            timeFormat: "H:mm",
+            slotLabelFormat: "H:mm",
+            columnFormat: "ddd DD.MM.YYYY",
+            titleFormat: "DD.MM.YYYY",
+            eventAfterRender: function (event, $el, view) {
+                $el.removeClass("fc-short");
+            },
+            eventAfterAllRender: function(view) {
+                try {
+                    setTimeLabels();
+                    setMinHeights();
+                } catch (err) {}
+            }
+		});});</script>
+</head>
+<body>
+<div id="modal_div" class="modal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="true"><div class="modal-dialog"><div class="modal-content"></div></div></div>
+<div id="modal_div2" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="true" data-focus-on="input:first"><div class="modal-dialog"><div class="modal-content"></div></div></div>
+<div id="system_messages_Modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="system_messages_Modal_Label"><div class="modal-dialog"><div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only">Sulge</span></button><h4 class="modal-title" id="system_messages_Modal_Label">V&auml;rsked s&otilde;numid ja ootel tegevused</h4>
+</div>
+<div class="modal-body"><ul class="list-group"></ul></div>
+<div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Sulge</button></div>
+</div></div></div>
+<nav role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><a href="https://ametikool.siseveeb.ee" data-toggle="tooltip" title="Avaleht" class="navbar-brand">Kuressaare Ametikool</a></div></div></nav><div id="main_container" class="container-fluid"><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fluid-print"><div class="main"><div id="program_content_div" class="clear">
+<ul class="nav nav-pills">
+<li class="active" role="presentation"><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan">Tunniplaan</a></li>
+<li role="presentation"><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/vabad_ruumid" rel="tooltip" title="V&otilde;imaldab leida vabu ruume">Vabad ruumid</a></li>
+<li role="presentation"><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/hetke_tunnid" rel="tooltip" title="N&auml;itab, millised tunnid toimuvad tunniplaani j&auml;rgi mingil ajamomendil">Hetke tunnid</a></li>
+</ul>
+<div class="clearfix"></div>
+<br><span class="btn-group"><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;nadal=04.03.2019" class="btn btn-primary xbtn-lg img_ico_link"><span aria-hidden="true" title="Eelmine n&auml;dal" class="glyphicon glyphicon-chevron-left img-rounded" rel="tooltip"></span></a><div class="dropdown btn-group">
+<button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=11.03.2019">11.03.2019-17.03.2019 <span class="label label-info">III periood</span></a> <span class="caret"></span></button><ul class="dropdown-menu">
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=04.02.2019">04.02.2019-10.02.2019 <span class="label label-info">III periood</span></a></li>
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=11.02.2019">11.02.2019-17.02.2019 <span class="label label-info">III periood</span></a></li>
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=18.02.2019">18.02.2019-24.02.2019 <span class="label label-info">III periood</span></a></li>
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=25.02.2019">25.02.2019-03.03.2019 <span class="label label-info">III periood</span></a></li>
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=04.03.2019">04.03.2019-10.03.2019 <span class="label label-info">III periood</span></a></li>
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=11.03.2019">11.03.2019-17.03.2019 <span class="label label-info">III periood</span></a></li>
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=18.03.2019">18.03.2019-24.03.2019 <span class="label label-info">III periood</span></a></li>
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=25.03.2019">25.03.2019-31.03.2019 <span class="label label-info">III periood</span></a></li>
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=01.04.2019">01.04.2019-07.04.2019 <span class="label label-info">III periood</span></a></li>
+<li><a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;e_plan=1&amp;nadal=08.04.2019">08.04.2019-14.04.2019 <span class="label label-info">III periood</span></a></li>
+</ul>
+</div>
+<a href="https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424&amp;nadal=18.03.2019" class="btn btn-primary xbtn-lg img_ico_link"><span aria-hidden="true" title="J&auml;rgmine n&auml;dal" class="glyphicon glyphicon-chevron-right img-rounded" rel="tooltip"></span></a></span> <div class="btn-group">
+<select name="oppegrupp" class="plan_filter_select form-control input-sm" type="select" id="oppegrupp"><option value="426">EV-18</option>
+<option value="398">HT-17</option>
+<option value="422">HTT-18t&ouml;&ouml;k</option>
+<option value="409">J-17</option>
+<option value="389">KBE-17</option>
+<option value="436">KD-18A</option>
+<option value="404">KGP-17</option>
+<option value="368">KLG-16</option>
+<option value="380">KLG-17T</option>
+<option value="454">KLG-18</option>
+<option value="346">KP-16</option>
+<option value="391">KP-17</option>
+<option value="427">KP-18</option>
+<option value="367">KSP-16</option>
+<option value="423">KSP-18</option>
+<option value="452">KVH-18</option>
+<option value="412">MR-17</option>
+<option value="410">MT-17</option>
+<option value="428">MT-18</option>
+<option value="396">N-17</option>
+<option value="347">SAT-16</option>
+<option value="392">SAT-17</option>
+<option value="430">SAT-18</option>
+<option value="437">SPA-18</option>
+<option value="432">T-18</option>
+<option value="431">TA-18</option>
+<option value="388">TAK-17</option>
+<option value="424" selected>TAK-18</option>
+<option value="366">VLE-16</option>
+<option value="411">VLE-17</option>
+<option value="429">VLE-18</option>
+<option value="406">VLT-17</option>
+<option value="401">&Auml;-17</option>
+<option value="434">&Otilde;-18</option></select><select name="opetaja" class="plan_filter_select form-control input-sm" type="select" id="opetaja"><option value="0">Vali &otilde;petaja</option>
+<option value="117">Ade Sepp</option>
+<option value="7133">Aino Rummel</option>
+<option value="10114">Alar Tael</option>
+<option value="9188">Alge Rooso</option>
+<option value="5">Andra Aavik</option>
+<option value="59">Andres Meisterson</option>
+<option value="102">Andres Saart</option>
+<option value="2181">Andrus Naulainen</option>
+<option value="50">Anne Lember</option>
+<option value="114">Anne-Li Tilk</option>
+<option value="7220">Anneli Lehtmets</option>
+<option value="1186">Anneli Viherpuu-Berens</option>
+<option value="7280">Anzelika Toll</option>
+<option value="1600">Ardo Hiiuv&auml;in</option>
+<option value="73">Arni Ots</option>
+<option value="76">Ave Paaskivi</option>
+<option value="5181">Bret Paas</option>
+<option value="3507">Eliis Vahter</option>
+<option value="10816">Elisa Avik</option>
+<option value="63">Elle M&auml;e</option>
+<option value="7669">Erik Riige</option>
+<option value="128">Evi Ustel-Hallim&auml;e</option>
+<option value="136">Halliki V&auml;li</option>
+<option value="4456">Heiko Kull</option>
+<option value="20">Heli Kakko</option>
+<option value="5138">Ian Erik Pettersson</option>
+<option value="8">Irina Arhipova</option>
+<option value="65">Jane M&auml;gi</option>
+<option value="2886">Janek Mander</option>
+<option value="129">J&uuml;ri Vaga</option>
+<option value="97">Kadri Riim</option>
+<option value="120">Kaido Trei</option>
+<option value="27">Kaie Kesk&uuml;la</option>
+<option value="2864">Kaire Tiik</option>
+<option value="9504">Karin Oinberg</option>
+<option value="7066">Karin Saare</option>
+<option value="9368">Kaspar Paas</option>
+<option value="5310">Klaarika Muul</option>
+<option value="7087">Kristjan Jansen</option>
+<option value="10191">K&auml;tlin Poopuu</option>
+<option value="47">Leelo Leesi</option>
+<option value="12">Lemmi Heero</option>
+<option value="1615">Madis Vaher</option>
+<option value="110">Maiju Zuping</option>
+<option value="16">Maila Juns-Veldre</option>
+<option value="30">Maire Kivi</option>
+<option value="4992">Mare Kirr</option>
+<option value="4998">Marek Tarkin</option>
+<option value="6376">Marella Kakkum</option>
+<option value="31">Margus Kivi</option>
+<option value="6144">Marika M&auml;gi</option>
+<option value="9363">Marika P&uuml;tsep</option>
+<option value="2719">Mariliis Siigart</option>
+<option value="7607">Martti Tomson</option>
+<option value="36">Marve Koppel</option>
+<option value="5003">Merit Karise</option>
+<option value="2987">Merle Tuulik</option>
+<option value="8659">Piia Prei</option>
+<option value="79">Pilvi Pihlas</option>
+<option value="7504">Piret Paomees</option>
+<option value="10480">Raido Kahm</option>
+<option value="10787">Rasmus T&uuml;&uuml;ts</option>
+<option value="105">Reena Smidt</option>
+<option value="134">Siiri Velve</option>
+<option value="45">Sille Lapp</option>
+<option value="82">Sirje Pree</option>
+<option value="3034">Taavi Rauniste</option>
+<option value="125">Taavi Tuisk</option>
+<option value="8499">Terje Kippak</option>
+<option value="121">Thea Treu</option>
+<option value="17">Tiia J&otilde;gi</option>
+<option value="10384">Tiit Juursalu</option>
+<option value="5010">Tiiu Kiil</option>
+<option value="7171">Tiiu Tamsalu</option>
+<option value="10076">Toivo K&otilde;ster</option>
+<option value="32">Toomas Kivi</option>
+<option value="8009">Triin Tisler</option>
+<option value="71">T&otilde;nis Oja</option>
+<option value="83">Urve Pulk</option>
+<option value="7551">Vahur Veelaid</option>
+<option value="8393">Virge Valk</option>
+<option value="112">&Uuml;lle Tamsalu</option></select><select name="ruum" class="plan_filter_select form-control input-sm" type="select" id="ruum"><option value="0">Vali ruum</option>
+<option value="101+peahoone+1.+k">101 peahoone 1. k</option>
+<option value="23">104</option>
+<option value="227">D11</option>
+<option value="228">D12</option>
+<option value="229">D13</option>
+<option value="230">D21</option>
+<option value="Haapsalu+Kultuurikeskus">Haapsalu Kultuurikeskus</option>
+<option value="39">Hotell</option>
+<option value="34">K101</option>
+<option value="33">K102</option>
+<option value="24">K201</option>
+<option value="27">K202</option>
+<option value="25">K204</option>
+<option value="35">K206</option>
+<option value="28">K208</option>
+<option value="203">K303</option>
+<option value="204">K304</option>
+<option value="205">K305</option>
+<option value="Keskkonnaamet">Keskkonnaamet</option>
+<option value="37">MK</option>
+<option value="250">Mess</option>
+<option value="38">REST</option>
+<option value="52">TM 105</option>
+<option value="51">TM 106</option>
+<option value="49">TM 123</option>
+<option value="45">TM 131</option>
+<option value="44">TM 141</option>
+<option value="42">TM 147</option>
+<option value="41">TM 153</option>
+<option value="40">TM 159</option>
+<option value="50">TM 201</option>
+<option value="251">TM 213</option>
+<option value="252">TM 214</option>
+<option value="233">TM 215</option>
+<option value="232">TM 219</option>
+<option value="2">&Otilde;106</option>
+<option value="1">&Otilde;112/&Otilde;K2</option>
+<option value="3">&Otilde;201</option>
+<option value="4">&Otilde;203</option>
+<option value="5">&Otilde;205</option>
+<option value="6">&Otilde;207</option>
+<option value="246">&Otilde;209</option>
+<option value="8">&Otilde;301</option>
+<option value="9">&Otilde;303</option>
+<option value="10">&Otilde;305</option>
+<option value="12">&Otilde;307</option>
+<option value="13">&Otilde;308</option>
+<option value="14">&Otilde;310</option>
+<option value="15">&Otilde;402</option>
+<option value="16">&Otilde;403</option>
+<option value="90">&Otilde;404</option></select>
+</div>
+<div id="calendar"></div>
+</div></div></div></div></div>
+<div id="dialog_div" class="dialog_div row clearfix ui-draggable modal col-sm-12 modal-content modal-body" data-keyboard="true" tabindex="-1"></div>
+</body>
+</html>
