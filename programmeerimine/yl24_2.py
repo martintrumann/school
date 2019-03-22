@@ -12,6 +12,7 @@ script = scripts[24]
 
 sscript = str(script).replace("\n", "")
 
-JSON = re.sub('^(.*?events: \[)?(.*)?(\],\s*lessons.*)', "\\2", sscript)
+JSON = re.sub('^(.*?events: )?(.*)?(,\s*lessons.*)', "\\2", sscript)
 
-json = demjson.decode(JSON)
+print(JSON)
+#print(demjson.decode(JSON, return_errors="True"))
