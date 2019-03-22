@@ -1,4 +1,4 @@
-import urllib3, json, re
+import urllib3, demjson, re
 from bs4 import BeautifulSoup as BS
 
 url = "https://ametikool.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=424"
@@ -9,8 +9,9 @@ soup = BS(page, "lxml")
 scripts = soup.find_all('script')
 
 script = scripts[24]
-sscript = str(script)
 
-print(re.sub('^(.*?)?(events.*)', "\\2", str(script)))
+sscript = str(script).replace("\n", "")
 
-#pyscript = json.loads(script)
+JSON = re.sub('^(.*?events: \[)?(.*)?(\],\s*lessons.*)', "\\2", sscript)
+
+json = demjson.decode(JSON)
