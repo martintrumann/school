@@ -14,5 +14,6 @@ sscript = str(script).replace("\n", "")
 
 JSON = re.sub('^(.*?events: )?(.*)?(,\s*lessons.*)', "\\2", sscript)
 
-print(JSON)
-#print(demjson.decode(JSON, return_errors="True"))
+#print(JSON)
+
+print(demjson.decode(JSON))
