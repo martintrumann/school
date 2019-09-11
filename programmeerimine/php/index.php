@@ -2,13 +2,9 @@
 
 foreach(scandir("./") as $file){
 	if(! preg_match("/\B\..*/i", $file) && $file != "index.php"){
-		echo "<h2> $file </h2>";
+		echo "<h2> $file </h2><p>";
 		include($file);
-		echo "</p><p>";
+		echo "</p>";
 	}
 }
-echo "<br>";
-$dir =opendir("./");
-echo "<br>";
-
 ?>

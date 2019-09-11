@@ -3,7 +3,7 @@ while True:
     num = randint(1,3)
     #(0 = käärid,) 1 = kivi, 2 = paber, 3 = käärid, (4 = kivi)
     user = input("(k)ivi, (p)aber, (k)äärid või (l)ahku: ")
-    
+
     if user == "kivi" or user == "k":
         usernum = 1
     elif user == "paber" or user == "p":
@@ -20,4 +20,3 @@ while True:
     elif num - 1 == usernum or usernum - 2 == num:
         print("minu võit!")
     print()
-        
