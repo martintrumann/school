@@ -5,8 +5,8 @@ num3 = input("arv3: ")
 maxx = num1
 
 if num2 > maxx:
-	maxx = num2
+    maxx = num2
 elif num3 > maxx:
-	maxx = num3
+    maxx = num3
 
 print(maxx)

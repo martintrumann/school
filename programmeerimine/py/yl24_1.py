@@ -9,6 +9,6 @@ titles = soup.find_all('td', 'titleColumn')
 
 i = 1
 for title in titles:
-	stitle = BeautifulSoup(str(title), "lxml")
-	print(i, stitle.a.string, stitle.span.string)
-	i = i + 1
+    stitle = BeautifulSoup(str(title), "lxml")
+    print(i, stitle.a.string, stitle.span.string)
+    i = i + 1
